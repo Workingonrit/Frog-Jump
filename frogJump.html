@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">  
+    <title>Frog Jump</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    
+
+
+
+  </head>
+
+  <style>
+
+    body{
+      margin: 0px;
+      overflow-x: hidden;
+    }
+
+    .game{
+      display: flex;
+      
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+     
+    }
+
+
+    .realtrack{
+      background-color: rgb(0, 0, 0);
+            height: 5px;
+           width: 100vw;
+           position: relative;
+    }
+
+
+
+ 
+
+
+@keyframes slide {
+  0% { left: 100%; } /* Start from the right edge */
+            100% { left: -150%; } /* Move to the left edge */
+  
+}
+
+
+    .obs{
+position: absolute;
+
+height: 15px;
+width: 3px;
+bottom: 4px;
+left: 500px;
+
+    }
+
+    .rock{
+      position: relative;
+      height: 30px;
+      width: 50px;
+z-index: -1;
+bottom: 10px;
+    }
+
+    .rock1{
+      position: relative;
+      height: 30px;
+      width: 50px;
+z-index: -1;
+
+    }
+
+
+    .rock2{
+      position: relative;
+      height: 30px;
+      width: 50px;
+z-index: -1;
+
+    }
+
+
+
+    
+    .rock3{
+      position: relative;
+      height: 80px;
+      width: 50px;
+      bottom: 80px;
+z-index: -1;
+
+    }
+
+
+    .obs1{
+      position: absolute;
+      left: 900px;
+     
+height: 15px;
+width: 3px;
+bottom: 4px;
+    }
+
+
+
+    .obs3{
+      position: absolute;
+      left: 1900px;
+     
+    
+height: 15px;
+width: 3px;
+bottom: 4px;
+    }
+
+
+
+
+
+
+     
+  
+
+    .dino {
+  position: absolute;
+ bottom: 5px;
+ left: 45px;
+  height: 20px;
+  width: 20px;
+  
+   z-index: -1; 
+  
+  
+}
+
+.dinowilljump {
+  animation: 1s dino ease-in-out;
+  
+}
+
+@keyframes dino {
+  0% {
+    transform: translateY(0px);
+  
+  }
+  50% {
+    transform: translateY(-150px);
+  
+  }
+  100% {
+    transform: translateY(0px);
+   
+  }
+}
+
+    .score{
+      position: absolute;
+
+      bottom: 500px;
+
+      left:580px;
+
+      display: inline-block
+
+    }
+    
+
+
+    .track {
+            background-color: rgb(0, 0, 0);
+            height: 5px;
+           width: 100000px;
+            position: relative;
+            animation: ; /* Adjust duration as needed */
+            transform-origin: left;
+        }
+
+
+        .frog{
+          height: 30px;
+          width: 50px;
+          position: absolute;
+          bottom: 2px;
+        }
+
+        .hidden{
+          display: block;
+          height: 30px;
+          width: 50px;
+          position: absolute;
+          bottom: 2px;
+        }
+
+        .hidden1{
+          display: none;
+          height: 50px;
+          width: 70px;
+          position: absolute;
+          bottom: 2px;
+          
+        }
+
+        .grass{
+          position: absolute;
+          height: 10px;
+          width: 10000000px;
+          right: 100px;
+          bottom: 2px;
+        }
+
+        .show{
+          display: none;
+          position: absolute;
+          bottom: 2px;
+        }
+
+        
+        .show1{
+          display: none;
+          position: absolute;
+          bottom: 5px;
+        }
+
+        
+        .show2{
+          display: block;
+          position: absolute;
+      
+        bottom: 1px;
+        }
+
+
+        .showa{
+          display: none;
+          position: absolute;
+          bottom: 3px;
+        }
+
+        
+        .showb{
+          display: none;
+          position: absolute;
+          bottom: 4px;
+          
+        }
+
+        
+        .showc{
+          display: block;
+          position: absolute;
+        bottom: 1px;
+        }
+
+
+        
+        .showa1{
+          display: none;
+          position: absolute;
+          bottom: 2px;
+        }
+
+        
+        .showb2{
+          display: none;
+          position: absolute;
+          bottom: 4px;
+        }
+
+        
+        .showc3{
+          display: block;
+          position: absolute;
+        bottom: 1px;
+        }
+
+        .start{
+          position:absolute;
+          left: 565px;
+          top: 350px;
+          cursor: pointer;
+          border-radius: 20px;
+          height: 50px;
+          width: 100px;
+          font-size: 20px;
+          border: solid bold;
+          
+
+        
+        }
+  </style>
+
+  <body>
+
+
+  <div class="game">
+
+    <div class="score">SCORE:
+      <div style="display: inline-block;" class="mark">0</div>
+    </div>
+
+
+    <button class="start">Start</button>
+
+
+    
+    <div class="realtrack">
+
+      
+    <div class="dino"> 
+      
+      <img src="Screenshot_2024-03-13_164128-removebg-preview.png" class="hidden"> 
+
+      <img src="Screenshot_2024-03-13_172709-removebg-preview.png" class="hidden1">
+    
+    </div>
+
+
+
+
+    
+      <div class="track">
+
+
+
+
+
+
+        <div>
+        
+          <img src="Screenshot_2024-03-13_183247-removebg-preview.png" class="grass">
+
+        </div>
+
+    
+        <div class="obs">
+
+          <img src="Screenshot_2024-03-13_181436-removebg-preview.png" class="rock show">
+
+
+          <img src="Screenshot_2024-03-13_184229-removebg-preview.png" class="rock3 show1">
+
+          
+          <img src="Screenshot_2024-03-13_182317-removebg-preview.png" class="rock1 show2">
+
+        </div>
+
+        <div class="obs1">
+
+          <img src="Screenshot_2024-03-13_181436-removebg-preview.png" class="rock showa">
+
+
+          <img src="Screenshot_2024-03-13_184229-removebg-preview.png" class="rock3 showb">
+
+          
+          <img src="Screenshot_2024-03-13_182317-removebg-preview.png" class="rock1 showc">
+
+
+        </div>
+
+      
+
+        <div class="obs3">
+
+          <img src="Screenshot_2024-03-13_181436-removebg-preview.png" class="rock showa1">
+
+
+          <img src="Screenshot_2024-03-13_184229-removebg-preview.png" class="rock3 showb2">
+
+          
+          <img src="Screenshot_2024-03-13_182317-removebg-preview.png" class="rock1 showc3">
+
+        </div>
+
+
+
+
+
+      </div>
+   </div>
+  </div>
+
+  
+    <script>
+
+document.querySelector('.start').addEventListener('click', function(){
+
+document.querySelector('.track').style.animation = 'slide 10s linear infinite';
+
+
+function score() {
+    document.querySelector('.mark').innerHTML = parseInt(document.querySelector('.mark').innerHTML, 10) + 1;
+}
+
+// Call the score function every 2 seconds (2000 milliseconds)
+setInterval(score, 500);
+
+})
+  
+
+
+
+
+
+
+
+
+function grass() {
+  let number = Math.random();
+
+  if( number >0.2 && number < 0.6){ document.querySelector('.show').style.display = 'block'; document.querySelector('.show1').style.display = 'none';document.querySelector('.show2').style.display = 'none'; 
+  
+  document.querySelector('.showa').style.display = 'block'; document.querySelector('.showb').style.display = 'none';document.querySelector('.showc').style.display = 'none';} 
+  
+  else if(number< 0.2) {document.querySelector('.show').style.display = 'none'; document.querySelector('.show1').style.display = 'block'; document.querySelector('.show2').style.display = 'none';
+
+  document.querySelector('.showa').style.display = 'none'; document.querySelector('.showb').style.display = 'block'; document.querySelector('.showc').style.display = 'none'}
+  
+  
+  else if (number >0.6) {document.querySelector('.show2').style.display = 'block'; document.querySelector('.show1').style.display = 'none'; document.querySelector('.show').style.display = 'none';
+
+  document.querySelector('.showa').style.display = 'block'; document.querySelector('.showb').style.display = 'none'; document.querySelector('.showc').style.display = 'none';}
+}
+
+setInterval(grass, 10000)
+
+
+
+
+
+
+function grass1() {
+  let number = Math.random();
+
+  if( number >0.3 && number < 0.6){ 
+  
+  document.querySelector('.showa').style.display = 'none'; document.querySelector('.showb').style.display = 'none';document.querySelector('.showc').style.display = 'block';} 
+  
+  else if(number <0.3) {
+
+  document.querySelector('.showa').style.display = 'none'; document.querySelector('.showb').style.display = 'block'; document.querySelector('.showc').style.display = 'none'}
+  
+  
+  else if (number >0.6) {
+
+  document.querySelector('.showa').style.display = 'block'; document.querySelector('.showb').style.display = 'none'; document.querySelector('.showc').style.display = 'none';}
+}
+
+
+setInterval(grass1, 10000)
+
+
+
+
+
+
+function grass3() {
+  let number = Math.random();
+
+  if( number >0.3 && number < 0.6){ 
+  
+  document.querySelector('.showa1').style.display = 'none'; document.querySelector('.showb2').style.display = 'none';document.querySelector('.showc3').style.display = 'block';} 
+  
+  else if(number <0.3) {
+
+  document.querySelector('.showa1').style.display = 'none'; document.querySelector('.showb2').style.display = 'block'; document.querySelector('.showc3').style.display = 'none'}
+  
+  
+  else if (number >0.6) {
+
+  document.querySelector('.showa1').style.display = 'block'; document.querySelector('.showb2').style.display = 'none'; document.querySelector('.showc3').style.display = 'none';}
+}
+
+
+setInterval(grass3, 10000)
+
+
+
+
+const dinoElement = document.querySelector('.dino');
+
+function playDinoAnimation() {
+    dinoElement.classList.add('dinowilljump');
+}
+
+
+function removejump() {
+
+document.querySelector('.dino').classList.remove('dinowilljump')
+
+}
+
+
+
+function changehidden() {
+  document.querySelector('.hidden1').style.display = 'block'
+  document.querySelector('.hidden').style.display = 'none';
+}
+function removepic() {
+  document.querySelector('.hidden1').style.display = 'none'
+  document.querySelector('.hidden').style.display = 'block';
+}
+
+
+
+
+// Add event listener for spacebar key press
+document.addEventListener('keydown', function(event) {
+    if (event.key === ' ' || event.code === 'Space') {
+        playDinoAnimation();
+        setTimeout(removejump, 500);
+         // Remove jump after 1 second
+         changehidden();
+         setTimeout(removepic, 500);
+    }
+});
+
+
+
+
+
+
+function high() {
+  if (document.querySelector('.mark').innerHTML > 200) {document.querySelector('.track').style.animation = 'slide 8s linear infinite'} else if (document.querySelector('.mark').innerHTML < 200 && document.querySelector('.mark').innerHTML > 10 ) {document.querySelector('.track').style.animation = 'slide 10s linear infinite'} else if (document.querySelector('.mark').innerHTML > 500) {document.querySelector('.track').style.animation = 'slide 5s linear infinite'}
+}
+
+setInterval(high, 1000)
+
+
+
+        
+ const obsElement = document.querySelector('.obs');
+ 
+const obsElement1 = document.querySelector('.obs3');
+
+const obsElement2 = document.querySelector('.obs1');
+
+let isColliding = false; // Flag to track collision state
+
+function checkCollision() {
+    const dinoRect = dinoElement.getBoundingClientRect();
+    const obsRect = obsElement.getBoundingClientRect();
+    const obsRect1 = obsElement1.getBoundingClientRect();
+    const obsRect2 = obsElement2.getBoundingClientRect();
+
+    // Check if the rectangles overlap
+    if (
+      dinoRect.left < obsRect.right &&
+        dinoRect.right > obsRect.left &&
+        dinoRect.top < obsRect.bottom &&
+        dinoRect.bottom > obsRect.top ||
+
+        dinoRect.left < obsRect1.right &&
+        dinoRect.right > obsRect1.left &&
+        dinoRect.top < obsRect1.bottom &&
+        dinoRect.bottom > obsRect1.top ||
+
+         dinoRect.left < obsRect2.right &&
+        dinoRect.right > obsRect2.left &&
+        dinoRect.top < obsRect2.bottom &&
+        dinoRect.bottom > obsRect2.top
+    ) {
+        isColliding = true;
+        console.log('Collision detected!');
+        alert('Game Over')
+        document.querySelector('.mark').innerHTML = 0
+
+        // Add your collision handling logic here
+    } else {
+        isColliding = false;
+        console.log('No collision.');
+    }
+
+    // Request the next animation frame
+    requestAnimationFrame(checkCollision);
+}
+
+// Start the collision detection loop
+requestAnimationFrame(checkCollision);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
+
+
+
